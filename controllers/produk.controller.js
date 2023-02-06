@@ -50,6 +50,7 @@ class produkController{
             nameprod: nameprod,
             stock_: stock_,
             code : code,
+            avail_: 1
         }
         const dataprod = await Produk.create(prod);
         
