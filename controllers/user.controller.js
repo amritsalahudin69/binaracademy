@@ -7,6 +7,9 @@ const { registerSchema } = require("../validations/schemas/register.schema")
 const { loginSchema } = require("../validations/schemas/login.schema")
 
 const bcrypt = require('bcryptjs')
+const jwt = require('jsonwebtoken')
+require('dotenv').config;
+const JWT_Key = process.env.JWT_Key
 
 class userController{
 
@@ -82,9 +85,17 @@ class userController{
             })
 
             let data = await bcrypt.compare(login.userpass, pps.userpass)
+            
+            const jwtPaylod ={
+                user_id: dataPengguna.id,
+                email: dataPengguna.useremail
+            }
+            const accessToken = jwt.sign(jwtPaylod, JWT_Key)
+            
             if(data){ 
                 data = {
                     msg :"Login Berhasil!",
+                    Token: accessToken,
                     dataPengguna
                 }
             }
