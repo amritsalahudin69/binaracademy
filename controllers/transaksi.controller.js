@@ -184,7 +184,7 @@ class transaksiController{
                 throw new ErrorResponse(400, 'Jumlah Pembayaran Terlalu Kebanyakan Dab! ora nduwe susuk');
             }
             if(xx.total_bayar < cekKodeTrans.total_bayar){
-                throw new ErrorResponse(400, 'Jumlah Pembayaran Kurang! Gass kon bayarke Ayang!');
+                throw new ErrorResponse(400, 'Jumlah Pembayaran Kurang! Gass kon bayarke Ayang!'); 
             }
             if(xx.total_bayar === cekKodeTrans.total_bayar){
                 let ustus = {
