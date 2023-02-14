@@ -60,6 +60,9 @@ class userController{
                 useremail : req.body.Email,
                 userpass : req.body.Password
             }
+
+            const h = req.header.authorization;
+            console.log(h);
             await validate(loginSchema, login);
             const pps = await User.findOne({
                 where :{useremail: login.useremail},
@@ -90,7 +93,7 @@ class userController{
                 user_id: dataPengguna.id,
                 email: dataPengguna.useremail
             }
-            const accessToken = jwt.sign(jwtPaylod, JWT_Key)
+            const accessToken = jwt.sign(jwtPaylod, JWT_Key, {expiresIn: 86400})
             
             if(data){ 
                 data = {
