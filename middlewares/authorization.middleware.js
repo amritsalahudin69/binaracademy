@@ -11,7 +11,6 @@ const auth = (req, res, next)=>{
     if (token){
         token = jwt.verify(token, JWT_Key)
     }
-
     if(token){
         req.user = token
         next();
