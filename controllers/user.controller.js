@@ -62,6 +62,7 @@ class userController{
             }
 
             const h = req.header.authorization;
+            
             console.log(h);
             await validate(loginSchema, login);
             const pps = await User.findOne({
@@ -99,7 +100,7 @@ class userController{
                 data = {
                     msg :"Login Berhasil!",
                     Token: accessToken,
-                    dataPengguna
+                    dataPengguna,h
                 }
             }
             return new Response(res, 200, data);
