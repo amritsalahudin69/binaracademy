@@ -5,9 +5,9 @@ const produkCon = new produkController();
 const authMiddleware = require('../middlewares/authorization.middleware')
 
 router.get('/produk', authMiddleware.auth, produkCon.getProduk);
-router.get('/produk/:id', produkCon.getProdukbyId);
-router.post('/produk', produkCon.insertProduk );
-router.put('/produk/:id', produkCon.updateProduk);
+router.get('/produk/:id', authMiddleware.auth,produkCon.getProdukbyId);
+router.post('/produk', authMiddleware.auth,produkCon.insertProduk );
+router.put('/produk/:id', authMiddleware.auth,produkCon.updateProduk);
 
 
 module.exports =router
